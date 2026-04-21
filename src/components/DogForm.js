@@ -26,19 +26,19 @@ function DogForm({ onSubmit, editingDog, onCancel }) {
         <form onSubmit={handleSubmit} className="dog-form">
             <input
                 type="text"
-                placeholder="Breed (e.g. labrador)"
+                placeholder="Breed eg: 🐕 "
                 value={breed}
                 onChange={e => setBreed(e.target.value)}
                 required
             />
             <input
                 type="text"
-                placeholder="Sub-breeds comma separated (e.g. golden,curly)"
+                placeholder="Sub-breeds comma separated eg:🐶,🐶,🐶"
                 value={subBreeds}
                 onChange={e => setSubBreeds(e.target.value)}
             />
             <button type="submit">{editingDog ? 'Update' : 'Add Dog'}</button>
-            {editingDog && <button type="button" onClick={onCancel}>Cancel</button>}
+              {editingDog && <button type="button" onClick={onCancel}>Cancel</button>}
         </form>
     );
 }

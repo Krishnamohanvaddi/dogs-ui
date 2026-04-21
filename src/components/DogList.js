@@ -2,7 +2,7 @@ import DogItem from './DogItem';
 
 function DogList({ dogs, onEdit, onDelete }) {
     if (dogs.length === 0) {
-        return <p className="empty-msg">No dogs found.They ran from here.</p>;
+        return <p className="empty-msg">No dogs found.They ran from here.🐕🐕🐕</p>;
     }
 
     return (

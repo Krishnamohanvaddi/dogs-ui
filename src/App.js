@@ -45,7 +45,7 @@ function App() {
   }
 
   async function handleDelete(id) {
-    if (!window.confirm('Delete this breed?')) return;
+    if (!window.confirm('Delete this breed? 🐕‍🦺 ')) return;
     try {
       await deleteDog(id);
       await loadDogs();
@@ -62,7 +62,7 @@ function App() {
   return (
       <div className="app">
         <header>
-          <h1>Dog Breeds</h1>
+          <h1>Dog Breeds🐶</h1>
           <p>{dogs.length} breeds in the database</p>
         </header>
 
