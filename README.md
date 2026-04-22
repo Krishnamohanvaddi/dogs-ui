@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# 🐾 Dogs UI — Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A React-based web interface for browsing and managing dog breeds. Features a full CRUD support, breed search.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🔗 Live URLs
 
-### `npm start`
+| Resource | URL |
+|---|---|
+| **Live App** | `https://dogs-ui-flax.vercel.app/` |
+| **GitHub Repo** | `https://github.com/Krishnamohanvaddi/dogs-ui` |
+| **Backend API** | `https://dogs-api-y5cx.onrender.com/api/dogs` |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Overview
 
-### `npm test`
+Dogs UI is the client-facing interface for the Dog Breeds management system. It communicates entirely with the Dogs API over HTTP and provides a clean interface for performing all breed operations without needing to interact with raw API endpoints.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app is built with **React** (Create React App), uses **Axios** for HTTP requests, and is deployed on **Vercel** with automatic deployments triggered on every push to `main`.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Layer | Technology |
+|---|---|
+| Framework | React 18 |
+| HTTP client | Axios |
+| Styling | Plain CSS|
+| Deployment | Vercel |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### All Breeds tab
+- Loads every breed from the database on page mount
+- Live filter input — instantly narrows the list as you type
+- Inline edit — clicking Edit opens an edit form directly inside the breed card without any navigation
+- Delete with confirmation dialog
+- Breed count displayed in the header, updates in real time
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Search Breed tab
+- Calls `GET /api/dogs/{breed}` directly — fetches a single breed by exact name
+- Shows a structured result card with breed name, ID, and all sub-breed tags
+- Action buttons on the result card to edit or delete the found breed
+- Clear error message when a breed is not found (404)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Add Breed tab
+- Form with breed name (required) and sub-breeds (optional)
+- Live sub-breed tag preview as you type — see exactly how tags will render before saving
+- Duplicate breed error handled gracefully with a toast notification
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Running Locally
 
-## Learn More
+### Prerequisites
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Node.js 20 LTS ([nodejs.org](https://nodejs.org))
+- The Dogs API backend running locally on port `8080`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 1. Clone the repository
 
-### Code Splitting
+```bash
+git clone https://github.com/krishnamohanvaddi/dogs-ui.git
+cd dogs-ui
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 2. Install dependencies
 
-### Analyzing the Bundle Size
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 3. Create a local environment file
 
-### Making a Progressive Web App
+Create a file called `.env.local` in the project root:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+REACT_APP_API_URL=http://localhost:8080/api/dogs
+```
 
-### Advanced Configuration
+This file is gitignored by default — it will not be pushed to GitHub.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 4. Start the development server
 
-### Deployment
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The app opens automatically at `http://localhost:3000`.
 
-### `npm run build` fails to minify
+### 5. Make sure the backend is running
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The frontend expects the Dogs API to be running at `localhost:8080`. If the backend is not running, the app will show a connection error message in the All Breeds tab.
+
+See the [dogs-api README](https://github.com/krishnamohanvaddi/dogs-api) for backend setup instructions.
+
+---
+
+## Deployment on Vercel
+
+This app is deployed on [Vercel](https://vercel.com) with zero configuration required.
+
+### Steps followed
+
+1. Pushed the code to GitHub
+2. Logged into Vercel → **Add New Project** → imported the `dogs-ui` repository
+3. Vercel auto-detected Create React App — no build settings needed
+4. Updated `.env.production` with the live Render backend URL and pushed to `main`
+5. Vercel deployed automatically
+
+Every subsequent `git push` to `main` triggers a new production deployment automatically.
+
+### Build command (auto-detected by Vercel)
+
+```bash
+npm run build
+```
+
+### Output directory (auto-detected by Vercel)
+
+```
+build/
+`
