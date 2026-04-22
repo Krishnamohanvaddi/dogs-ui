@@ -1,127 +1,182 @@
-# 🐾 Dogs UI — Frontend
 
-> A React-based web interface for browsing and managing dog breeds. Features a full CRUD support, breed search.
+# 🐶 Dogs UI — Frontend
 
----
-
-## 🔗 Live URLs
-
-| Resource | URL |
-|---|---|
-| **Live App** | `https://dogs-ui-flax.vercel.app/` |
-| **GitHub Repo** | `https://github.com/Krishnamohanvaddi/dogs-ui` |
-| **Backend API** | `https://dogs-api-y5cx.onrender.com/api/dogs` |
+This is a simple web application built using React to manage dog breeds.
+You can view, search, add, update, and delete breeds using a clean UI instead of calling APIs manually.
 
 ---
 
-## Overview
+## 🔗 Links
 
-Dogs UI is the client-facing interface for the Dog Breeds management system. It communicates entirely with the Dogs API over HTTP and provides a clean interface for performing all breed operations without needing to interact with raw API endpoints.
+* **Live App**
+  [https://dogs-ui-flax.vercel.app/](https://dogs-ui-flax.vercel.app/)
 
-The app is built with **React** (Create React App), uses **Axios** for HTTP requests, and is deployed on **Vercel** with automatic deployments triggered on every push to `main`.
+* **GitHub Repository**
+  [https://github.com/Krishnamohanvaddi/dogs-ui](https://github.com/Krishnamohanvaddi/dogs-ui)
 
----
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Framework | React 18 |
-| HTTP client | Axios |
-| Styling | Plain CSS|
-| Deployment | Vercel |
+* **Backend API**
+  [https://dogs-api-y5cx.onrender.com/api/dogs](https://dogs-api-y5cx.onrender.com/api/dogs)
 
 ---
 
-## Features
+## 📌 Overview
 
-### All Breeds tab
-- Loads every breed from the database on page mount
-- Live filter input — instantly narrows the list as you type
-- Inline edit — clicking Edit opens an edit form directly inside the breed card without any navigation
-- Delete with confirmation dialog
-- Breed count displayed in the header, updates in real time
+Dogs UI is the frontend part of the Dog Breeds project.
 
-### Search Breed tab
-- Calls `GET /api/dogs/{breed}` directly — fetches a single breed by exact name
-- Shows a structured result card with breed name, ID, and all sub-breed tags
-- Action buttons on the result card to edit or delete the found breed
-- Clear error message when a breed is not found (404)
+It connects to the backend API and lets users:
 
-### Add Breed tab
-- Form with breed name (required) and sub-breeds (optional)
-- Live sub-breed tag preview as you type — see exactly how tags will render before saving
-- Duplicate breed error handled gracefully with a toast notification
+* View all breeds
+* Search for a breed
+* Add new breeds
+* Update existing ones
+* Delete breeds
+
+Everything is done through a simple interface, so users don’t need to work with raw APIs.
+
 ---
 
-## Running Locally
+## ⚙️ Tech Stack
 
-### Prerequisites
+* **React 18**
+* **Axios (for API calls)**
+* **Plain CSS (no UI libraries)**
+* **Vercel (for deployment)**
 
-- Node.js 20 LTS ([nodejs.org](https://nodejs.org))
-- The Dogs API backend running locally on port `8080`
+---
 
-### 1. Clone the repository
+## ✨ Features
+
+### 🐾 All Breeds
+
+* Shows all breeds when the page loads
+* Search/filter works instantly as you type
+* Edit option available directly inside each item
+* Delete option with confirmation
+* Total count updates automatically
+
+---
+
+### 🔍 Search Breed
+
+* Search for a breed by name
+* Shows full details (ID, breed name, sub-breeds)
+* Option to edit or delete from the result
+* Shows error message if breed is not found
+
+---
+
+### ➕ Add Breed
+
+* Simple form to add a new breed
+* Sub-breeds are optional
+* Live preview shows how sub-breeds will look
+* Handles duplicate entries with proper message
+
+---
+
+## 💻 Run Locally
+
+### Requirements
+
+* Node.js (recommended version 20)
+* Backend API should be running on port `8080`
+
+---
+
+### Steps
+
+1. Clone the project
 
 ```bash
 git clone https://github.com/krishnamohanvaddi/dogs-ui.git
 cd dogs-ui
 ```
 
-### 2. Install dependencies
+---
+
+2. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Create a local environment file
+---
 
-Create a file called `.env.local` in the project root:
+3. Create environment file
+
+Create `.env.local` in the project folder:
 
 ```
 REACT_APP_API_URL=http://localhost:8080/api/dogs
 ```
 
-This file is gitignored by default — it will not be pushed to GitHub.
+---
 
-### 4. Start the development server
+4. Start the app
 
 ```bash
 npm start
 ```
 
-The app opens automatically at `http://localhost:3000`.
+---
 
-### 5. Make sure the backend is running
+5. Open in browser
 
-The frontend expects the Dogs API to be running at `localhost:8080`. If the backend is not running, the app will show a connection error message in the All Breeds tab.
-
-See the [dogs-api README](https://github.com/krishnamohanvaddi/dogs-api) for backend setup instructions.
+```
+http://localhost:3000
+```
 
 ---
 
-## Deployment on Vercel
+⚠️ Note:
+Make sure backend is running.
+If not, you will see connection errors.
 
-This app is deployed on [Vercel](https://vercel.com) with zero configuration required.
+---
 
-### Steps followed
+## 🚀 Deployment (Vercel)
 
-1. Pushed the code to GitHub
-2. Logged into Vercel → **Add New Project** → imported the `dogs-ui` repository
-3. Vercel auto-detected Create React App — no build settings needed
-4. Updated `.env.production` with the live Render backend URL and pushed to `main`
-5. Vercel deployed automatically
+This project is deployed using Vercel.
 
-Every subsequent `git push` to `main` triggers a new production deployment automatically.
+### What I did:
 
-### Build command (auto-detected by Vercel)
+* Pushed code to GitHub
+* Connected repo to Vercel
+* Vercel auto-detected React setup
+* Added production API URL
+* Enabled auto deployment
+
+Now, every time I push code to `main`, it automatically deploys.
+
+---
+
+### Build command
 
 ```bash
 npm run build
 ```
 
-### Output directory (auto-detected by Vercel)
+---
+
+### Output folder
 
 ```
 build/
-`
+```
+
+---
+
+## 🧠 Simple Choices I Made
+
+* Used plain CSS instead of UI libraries → keeps app lightweight and simple
+* Direct API calls using Axios → easy to manage and debug
+
+---
+
+## 🔮 Improvements (if extended)
+
+If I continue working on this, I would:
+
+* Improve UI design
+* Add pagination for large lists
+* Add authentication
